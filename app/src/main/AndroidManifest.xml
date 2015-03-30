@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.github.hidroh.materialistic" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".Application"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".ListActivity"
+            android:configChanges="orientation|screenSize" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ItemActivity"
+            android:label="@string/title_activity_item"
+            android:configChanges="orientation|screenSize" >
+            <intent-filter android:label="@string/filter_title_item" >
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="news.ycombinator.com"
+                    android:pathPrefix="/item"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter android:label="@string/filter_title_item" >
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="news.ycombinator.com"
+                    android:pathPrefix="/item"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".WebActivity"
+            android:label="@string/title_activity_web"
+            android:configChanges="orientation|screenSize" >
+        </activity>
+        <activity
+            android:name=".FavoriteActivity"
+            android:label="@string/title_activity_favorite"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTop" >
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable_favorite" />
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".NewActivity"
+            android:label="@string/title_activity_new"
+            android:configChanges="orientation|screenSize" >
+        </activity>
+        <activity
+            android:name=".ShowActivity"
+            android:label="@string/title_activity_show"
+            android:configChanges="orientation|screenSize" >
+        </activity>
+        <activity
+            android:name=".AskActivity"
+            android:label="@string/title_activity_ask"
+            android:configChanges="orientation|screenSize" >
+        </activity>
+        <activity
+            android:name=".JobsActivity"
+            android:label="@string/title_activity_jobs"
+            android:configChanges="orientation|screenSize" >
+        </activity>
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/title_activity_search"
+            android:configChanges="orientation|screenSize" >
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable_stories" />
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/title_activity_about"
+            android:configChanges="orientation|screenSize" >
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/action_settings" >
+        </activity>
+        <activity
+            android:name=".ActionBarSettingsActivity"
+            android:label="@string/action_settings" >
+        </activity>
+        <provider
+            android:authorities="io.github.hidroh.materialistic.provider"
+            android:name=".data.MaterialisticProvider"
+            android:exported="false" />
+        <provider
+            android:authorities="io.github.hidroh.materialistic.recentprovider"
+            android:name=".data.SearchRecentSuggestionsProvider"
+            android:exported="false" />
+    </application>
+
+</manifest>
